@@ -71,16 +71,13 @@ const Airtime = ({ time, day }) => {
   }
 
   return (
-    <div>
-      {`${day} de ${getMonth()} a las ${time}`}
-      <span>(GMT-3)</span>
-    </div>
+    <div className='airtime'>{`${day} de ${getMonth()} a las ${time}`}</div>
   )
 }
 
 Airtime.propTypes = {
   time: PropTypes.string.isRequired,
-  day: PropTypes.string.isRequired,
+  day: PropTypes.number.isRequired,
 }
 
 export default App
