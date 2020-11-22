@@ -1,0 +1,24 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {}
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-unsafe-negation": "error",
+    "no-unexpected-multiline": "error",
+    "no-undef": "error"
+  },
+  "plugins": ["jest"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest/globals": true
+  }
+}
