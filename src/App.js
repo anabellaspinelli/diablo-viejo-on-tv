@@ -30,6 +30,7 @@ function App() {
                 key={`${airtime.hora_inicio}-${airtime.day}`}
                 time={airtime.hora_inicio}
                 day={airtime.day}
+                month={airtime.month}
               />
             ))}
 
@@ -43,34 +44,15 @@ function App() {
   )
 }
 
-const Airtime = ({ time, day }) => {
-  const getMonth = () => {
-    const monthNames = [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Diciembre',
-    ]
+const Airtime = ({ time, day, month }) => {
+  const airtimeText = `${day} de ${month} a las ${time}`
 
-    const date = new Date()
-    return monthNames[date.getMonth()]
-  }
-
-  return (
-    <div className='airtime'>{`${day} de ${getMonth()} a las ${time}`}</div>
-  )
+  return <div className='airtime'>{airtimeText}</div>
 }
 
 Airtime.propTypes = {
   time: PropTypes.string.isRequired,
+  month: PropTypes.string.isRequired,
   day: PropTypes.number.isRequired,
 }
 
