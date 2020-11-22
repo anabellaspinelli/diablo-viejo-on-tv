@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
+import { getAirTimes } from './transport'
 import './App.css'
 import DVLogo from './logo.png'
 
 function App() {
   const [airtimes, setAirtimes] = useState(null)
-  useEffect(() => {
-    async function getAirTimes() {
-      const body = await fetch(
-        'https://raw.githubusercontent.com/anabellaspinelli/incaa-tv-movie-times/master/airtimes.json',
-      )
-        .then(res => res.json())
-        .catch(e => console.error(e))
-      setAirtimes(body)
-    }
 
-    getAirTimes()
+  useEffect(() => {
+    getAirTimes().then(incaaAirtimesResponse =>
+      setAirtimes(incaaAirtimesResponse),
+    )
   }, [])
 
   if (!airtimes) {
@@ -29,7 +24,6 @@ function App() {
         <img src={DVLogo} className='logo' />
         <h1>¿Cuándo pasan Diablo Viejo?</h1>
         {airtimes.length ? (
-          // [].length ?
           <>
             {airtimes.map(airtime => (
               <Airtime
